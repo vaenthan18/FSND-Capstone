@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiServerUrl: 'http://127.0.0.1:5000',
+  apiServerUrl: 'http://0.0.0.0:5000',
   auth0: {
     url: 'fsnd-vaenthan', // the auth0 domain prefix
     audience: 'casting', // the audience set for the auth0 app
