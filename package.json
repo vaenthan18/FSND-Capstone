@@ -30,9 +30,7 @@
     "rxjs": "~6.5.1",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.29",
-    "lodash": "^4.17.13"
-  },
-  "devDependencies": {
+    "lodash": "^4.17.13",
     "@angular-devkit/architect": "~0.13.8",
     "@angular-devkit/build-angular": "~0.13.8",
     "@angular-devkit/core": "~7.3.8",
@@ -57,6 +55,8 @@
     "ts-node": "~8.1.0",
     "tslint": "~5.16.0",
     "typescript": "~3.1.6"
+  },
+  "devDependencies": {
   },
   "description": "An Ionic project"
 }

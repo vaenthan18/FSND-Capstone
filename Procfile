@@ -1,2 +1,2 @@
 web: gunicorn app:app
-web: npm i && ionic serve
+web: npm run build && npm run start
