@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiServerUrl: 'https://vaenthan-casting-agency.herokuapp.com/', // the running FLASK api server url
+  apiServerUrl: 'https://vaenthan-casting-agency.herokuapp.com', // the running FLASK api server url
   auth0: {
     url: 'fsnd-vaenthan', // the auth0 domain prefix
     audience: 'casting', // the audience set for the auth0 app
