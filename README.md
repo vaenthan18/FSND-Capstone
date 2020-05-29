@@ -135,6 +135,8 @@ Ionic ships with a useful development server which detects changes and transpile
 ionic serve
 ```
 
+>_Node_: By default the frontend connects to the remote server, however this can be modified in the apiServerUrl field in `./frontend/src/environments/environment.ts`
+
 ## API Reference
 
 ---
