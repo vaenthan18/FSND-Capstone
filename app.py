@@ -136,6 +136,27 @@ def create_app(test_config=None):
             'movies': [movie.format()]
         })
 
+    @app.route('/reset', methods=['POST'])
+    def new_movie():
+        for m in Movie.query.all():
+            m.delete()
+
+        for a in Actor.query.all():
+            a.delete()
+        
+        movie = Movie(id=1, title='Movie Test', release_date='2000-01-01')
+        actor = Actor(id=1, name='Actor Test', age=30, gender='Male')
+        try:
+            movie.insert()
+            actor.insert()
+        except Exception:
+            abort(400)
+        return jsonify({
+            'success': True,
+            'movies': [movie.format()]
+            'actors': [actor.format()]
+        })
+
     # Error Handling
     @app.errorhandler(422)
     def unprocessable(error):

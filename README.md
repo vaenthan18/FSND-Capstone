@@ -105,6 +105,7 @@ Endpoints can be tested with [Postman](https://getpostman.com)
 - Import the postman collection `./vaenthan-fsnd-capstone.postman_collection.json`
 - Run the collection to manually test each endpoint.
 - If a 404 error is raised, reset the database and run again
+- The local database must be running
 
 ### Frontend (Optional)
 ---
