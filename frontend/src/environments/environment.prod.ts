@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiServerUrl: 'http://0.0.0.0:5000',
+  apiServerUrl: 'https://vaenthan-casting-agency.herokuapp.com/',
   auth0: {
     url: 'fsnd-vaenthan', // the auth0 domain prefix
     audience: 'casting', // the audience set for the auth0 app
