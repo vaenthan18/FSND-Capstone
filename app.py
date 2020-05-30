@@ -36,16 +36,14 @@ def create_app(test_config=None):
     @app.route('/actors/<int:actor_id>', methods=['PATCH'])
     @requires_auth('patch:actors')
     def edit_actor(jwt, actor_id):
-        data = request.get_json('actor')
         actor = Actor.query.get(actor_id)
         if actor is None:
             abort(404)
-
-        actor.name = data['name']
-        actor.age = data['age']
-        actor.gender = data['gender']
-
         try:
+            data = request.get_json('actor')
+            actor.name = data['name']
+            actor.age = data['age']
+            actor.gender = data['gender']
             actor.update()
         except Exception:
             abort(400)
@@ -61,10 +59,10 @@ def create_app(test_config=None):
         movie = Movie.query.get(movie_id)
         if movie is None:
             abort(404)
-        data = request.get_json('movie')
-        movie.title = data['title']
-        movie.release_date = data['release_date']
         try:
+            data = request.get_json('movie')
+            movie.title = data['title']
+            movie.release_date = data['release_date']
             movie.update()
         except Exception:
             abort(400)
@@ -79,7 +77,6 @@ def create_app(test_config=None):
         actor = Actor.query.get(actor_id)
         if actor is None:
             abort(404)
-
         try:
             actor.delete()
         except Exception:
@@ -96,7 +93,6 @@ def create_app(test_config=None):
         movie = Movie.query.get(movie_id)
         if movie is None:
             abort(404)
-
         try:
             movie.delete()
         except Exception:
@@ -110,10 +106,10 @@ def create_app(test_config=None):
     @app.route('/actors', methods=['POST'])
     @requires_auth('post:actors')
     def new_actor(jwt):
-        data = request.get_json('actor')
-        actor = Actor(name=data['name'],
-                      age=data['age'], gender=data['gender'])
         try:
+            data = request.get_json('actor')
+            actor = Actor(name=data['name'],
+                          age=data['age'], gender=data['gender'])
             actor.insert()
         except Exception:
             abort(400)
@@ -125,36 +121,16 @@ def create_app(test_config=None):
     @app.route('/movies', methods=['POST'])
     @requires_auth('post:movies')
     def new_movie(jwt):
-        data = request.get_json('movie')
-        movie = Movie(title=data['title'], release_date=data['release_date'])
         try:
+            data = request.get_json('movie')
+            movie = Movie(title=data['title'],
+                          release_date=data['release_date'])
             movie.insert()
         except Exception:
             abort(400)
         return jsonify({
             'success': True,
             'movies': [movie.format()]
-        })
-
-    @app.route('/reset', methods=['POST'])
-    def new_movie():
-        for m in Movie.query.all():
-            m.delete()
-
-        for a in Actor.query.all():
-            a.delete()
-        
-        movie = Movie(id=1, title='Movie Test', release_date='2000-01-01')
-        actor = Actor(id=1, name='Actor Test', age=30, gender='Male')
-        try:
-            movie.insert()
-            actor.insert()
-        except Exception:
-            abort(400)
-        return jsonify({
-            'success': True,
-            'movies': [movie.format()]
-            'actors': [actor.format()]
         })
 
     # Error Handling
