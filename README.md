@@ -1,5 +1,10 @@
 # FSND Capstone Project: Casting Agency API
 
+## Introduction to Project
+---
+This application developed for the Udacity Full Stack Nanodegree Program aims to make logging Actors and Movies along with their respective details easier for a casting agency, with a remote server and database that can be accessed with the appropriate credentials to give the individuals of the casting agency the appropriate access. This runs off of a flask server hostend on heroku following the pep8 style guidelines with an optional ionic frontend that can be run locally.
+
+
 ## Application URL's: 
 
 - **Live Production Server:**
@@ -43,7 +48,7 @@ It is recommended to utilize a virtual environment to run this project locally. 
 pip install -r requirements.txt
 ```
 
-- This will install all of the required python packages.
+- This will install all of the required python packages which are located in the `requirements.txt` file
 
 
 
@@ -60,23 +65,10 @@ export DATABASE_URL=<URI_TO_DATABASE>
 ```
 
 
-
-#### Setup Testing Database
-
-```shell
-createdb capstone_test
-```
-
-- Setup environment variable for local test database path:
-
-```shell
-export DATABASE_URL=<URI_TO_TEST_DATABASE> 
-```
-
-
-**Running The Server**
-
+**Running The Server Locally**
+>From the project root directory, run
 >```shell
+>source ./setup.sh
 >export DATABASE_URL=<URI_TO_DATABASE> 
 >```
 >
@@ -84,28 +76,29 @@ export DATABASE_URL=<URI_TO_TEST_DATABASE>
 >
 > 
 >
-> Set entry-point and enable debug mode:
+> Set entry-point and run the application:
 >
 > ```shell
 > export FLASK_APP=app.py
-> export FLASK_ENV=development
-> ```
->
-> - Runs the local Flask server :
->
-> ```shell
 > flask run --reload
 > ```
 
 
 
 **Running Tests**
+>To test the python unit tests, from the project root directory, run
+>```shell
+>source ./setup.sh
+>python3 test_app.py 
+>```
+>
+>Endpoints can also be tested with [Postman](https://getpostman.com)
+>- Import the postman collection `./vaenthan-fsnd-capstone.postman_collection.json`
+>- Run the collection to manually test each endpoint.
+>- If a 404 error is raised, reset the database and run again
+>- The local database must be running
 
-Endpoints can be tested with [Postman](https://getpostman.com)
-- Import the postman collection `./vaenthan-fsnd-capstone.postman_collection.json`
-- Run the collection to manually test each endpoint.
-- If a 404 error is raised, reset the database and run again
-- The local database must be running
+**JWT's and other Environment Variables can be found in `setup.sh`**
 
 ### Frontend (Optional)
 ---
